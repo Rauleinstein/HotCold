@@ -31,6 +31,7 @@
         android:layout_below="@+id/imgPreview"
         android:layout_alignEnd="@+id/sendNewsButton"
         android:layout_marginTop="88dp"
-        android:hint="Texto de la noticia" />
+        android:hint="Texto de la noticia"
+        android:enabled="false" />
 
 </RelativeLayout>

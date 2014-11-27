@@ -27,11 +27,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
         android:id="@+id/textNew"
-        android:layout_below="@+id/imgPreview"
-        android:layout_alignEnd="@+id/sendNewsButton"
-        android:layout_marginTop="88dp"
-        android:hint="Texto de la noticia"
-        android:enabled="false" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Texto de la noticia" />
 
 </RelativeLayout>

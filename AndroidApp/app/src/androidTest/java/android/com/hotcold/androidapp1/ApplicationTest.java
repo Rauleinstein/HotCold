@@ -1,4 +1,4 @@
-package android.com.hotcold.androidapp;
+package android.com.hotcold.androidapp1;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

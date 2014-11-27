@@ -9,8 +9,15 @@ if ($mysqli->connect_errno) {
 
 $sql = sprintf("SELECT * FROM %s", $_POST['tabla']);
 
-$result = $mysqli->query("SELECT * FROM "); 
-var_dump($result);
+$result = $mysqli->query($sql); 
+if (!$result) {
+	 printf("Error: %s\n", $mysqli->error);
+	 die;
+}
 
-$json = $result->fetch_array();
-echo json_encode($json); 
+while($row = $result->fetch_array(MYSQLI_ASSOC))
+{
+	$rows[] = $row;
+}
+
+echo json_encode($rows);

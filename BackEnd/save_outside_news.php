@@ -30,15 +30,6 @@ foreach ($path as $rss) {
 		$link = $noticia->link;
 		$guid = $noticia->guid;
 		$pubDate = $noticia->pubDate;
-			echo ($title);
-			echo "<br>";
-			echo ($description);		
-			echo "<br>";
-			echo ($link);
-			echo "<br>";
-			echo ($guid);
-			echo "<br>";
-			echo ($pubDate);
 
 		$query = "INSERT INTO Noticias (id, title, description, link, guid, pubDate) VALUES(NULL, ?, ?, ?, ?, ?)";
 		$statement = $mysqli->prepare($query);

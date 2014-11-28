@@ -12,5 +12,6 @@ public abstract class Backend {
 
         // TODO enviar foto si existe y el contenido
 
+
     }
 }

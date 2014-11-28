@@ -2,12 +2,12 @@ package android.com.hotcold;
 
 import android.app.Activity;
 import android.com.hotcold.androidapp1.R;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -18,24 +18,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import network.Backend;
 
 
 public class SendNewsForm extends Activity {
 
+    private static final String ACTIVITY_TAG = "SendNewsFormActivity";
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_VIDEO_CAPTURE = 2;
+
     // View components
     Button sendNewsButton;
-    ImageView imgPreview;
+    ImageView imgPreview, videoPreview;
     EditText textNew;
     Activity activity;
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    static final int REQUEST_TAKE_PHOTO = 1;
     static Bitmap imageNews;
 
     String imageNewsFileName; //Name of the image to will be send
@@ -77,6 +74,15 @@ public class SendNewsForm extends Activity {
 
         activity = this;
 
+        videoPreview = (ImageView) findViewById(R.id.videoPreview);
+        videoPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO añadir funcionalidad
+                dispatchTakeVideoIntent();
+            }
+        });
+
         sendNewsButton = (Button) findViewById(R.id.sendNewsButton);
         sendNewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,16 +112,33 @@ public class SendNewsForm extends Activity {
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        // Capture the intent of camera, and set it to imgage preview
+        // Capture the intent of camera for a PHOTO, and set it to image preview
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && data != null) {
             Bundle extras = data.getExtras();
             imageNews = (Bitmap) extras.get("data");
             imgPreview.setImageBitmap(imageNews);
         }
+
+        // Capture the intent of camera for a VIDEO, and set it to video preview
+        if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK && data != null) {
+            Uri videoUri = data.getData();
+            String videoFile = videoUri.toString();
+            Log.i(ACTIVITY_TAG, "Video capture: " + videoFile);
+            Bitmap thumbnail = ThumbnailUtils.createVideoThumbnail(videoFile,
+                    MediaStore.Images.Thumbnails.MINI_KIND);
+
+            if(thumbnail != null) {
+                videoPreview.setImageBitmap(thumbnail);
+            }
+            else{
+                videoPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
+            }
+
+        }
+
     }
 
     // Launch camera to get a picture
@@ -123,9 +146,16 @@ public class SendNewsForm extends Activity {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         //Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
 
+    }
+
+    private void dispatchTakeVideoIntent() {
+        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+        }
     }
 
 }

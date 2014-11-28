@@ -22,9 +22,4 @@ if ($result = $mysqli->query($sql)) {
 } else {
 	printf("Error: %s\n", $mysqli->error);
 }
-/*
-$result = $mysqli->query("SELECT * FROM Noticias"); 
-var_dump($result);
 
-$json = $result->fetch_array();
-echo json_encode($json); */

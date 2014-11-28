@@ -1,7 +1,7 @@
 package android.com.hotcold;
 
 import android.app.Activity;
-import android.com.hotcold.androidapp1.R;
+import android.com.hotcold.androidapp.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;

@@ -1,10 +1,9 @@
 package android.com.hotcold;
 
 import android.app.Activity;
-import android.com.hotcold.androidapp1.R;
+import android.com.hotcold.androidapp.R;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;

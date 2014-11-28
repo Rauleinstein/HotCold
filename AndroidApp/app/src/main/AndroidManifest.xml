@@ -17,14 +17,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="android.com.hotcold.SendNewsForm"
+            android:name="android.com.hotcold.SendNewsFormActivity"
             android:label="@string/title_activity_send_news_form" >
         </activity>
 
-        <uses-feature android:name="android.hardware.camera"
+        <uses-feature
+            android:name="android.hardware.camera"
             android:required="true" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+
+        <uses-permission
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
             android:maxSdkVersion="18" />
+
+        <activity
+            android:name="android.com.hotcold.HotColdZoneActivity"
+            android:label="@string/title_activity_hot_cold_zone" >
+        </activity>
     </application>
 
 </manifest>

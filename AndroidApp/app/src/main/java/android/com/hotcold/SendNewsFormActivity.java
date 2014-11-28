@@ -20,7 +20,7 @@ import android.widget.Toast;
 import network.Backend;
 
 
-public class SendNewsForm extends Activity {
+public class SendNewsFormActivity extends Activity {
 
     private static final String ACTIVITY_TAG = "SendNewsFormActivity";
     static final int REQUEST_IMAGE_CAPTURE = 1;

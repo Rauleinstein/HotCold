@@ -3,6 +3,7 @@ package network;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,7 +79,7 @@ public abstract class Backend {
                 while (scan.hasNext())
                     str += scan.nextLine();
                 scan.close();
-                System.out.println(str);
+                Log.i(TAG, str);
                 try {
                     JSONArray jsonArray = new JSONArray(str);
 
@@ -96,7 +97,13 @@ public abstract class Backend {
         }
     }
 
-    public JSONArray GetNews(String addr) throws Exception {
+    /**
+     * Get some news form the system
+     * @param addr
+     * @return
+     * @throws Exception
+     */
+    public static JSONArray GetNews(String addr) throws Exception {
         Asinc asi = new Asinc();
         asi.execute(addr);
         JSONArray ret = asi.get();

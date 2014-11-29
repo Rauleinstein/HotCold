@@ -9,13 +9,21 @@ if ($mysqli->connect_errno) {
 }
 
 
+<<<<<<< HEAD
 $sql = sprintf("INSERT INTO `u887840871_news`.`%s` (`id`, `title`, `description`, `link`, `guid`, `pubDate`, `temperatura`, `latitud`, `longitud`) VALUES ( NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
 				$mysqli->real_escape_string($params['tabla']), 
+=======
+$sql = sprintf("INSERT INTO `u887840871_news`.`%s` (`id`, `title`, `description`, `link`, `guid`, `pubDate`, `temperatura`, `latitud`, `longitud`) VALUES (%s, NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');", 
+				$mysqli->real_escape_string($params['table']), 
+>>>>>>> develop
 				$mysqli->real_escape_string($params['title']), 
 				$mysqli->real_escape_string($params['description']), 
 				$mysqli->real_escape_string($params['link']), 
 				$mysqli->real_escape_string($params['guid']), 
-				$mysqli->real_escape_string($params['pubDate'])
+				$mysqli->real_escape_string($params['pubDate']), 
+				$mysqli->real_escape_string($params['temperatura']), 
+				$mysqli->real_escape_string($params['latitud']), 
+				$mysqli->real_escape_string($params['longitud'])
 			);
 
 if ($result = $mysqli->query($sql)) {

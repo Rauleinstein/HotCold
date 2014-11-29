@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import network.Backend;
 import network.News;
 
 
 public class MainActivity extends Activity {
+
+    Button boton1, boton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

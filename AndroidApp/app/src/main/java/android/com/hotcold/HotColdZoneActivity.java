@@ -252,7 +252,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
             title.setText(jsonNew.getString(TITLE));
             description.setText(jsonNew.getString(DESCRIPTION));
 
-            imgPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
+            //imgPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
         } catch (JSONException e) {
             Log.e(ACTIVITY_TAG, "Cant open JSON, " + e);
         }

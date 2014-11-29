@@ -92,7 +92,7 @@ public class SendNewsFormActivity extends Activity {
                 // TODO añadir funcionalidad
                 if(textNew.getText().toString().trim().length()>0) {
                     String title = "";
-                    String description = ";";
+                    String description = "";
                     String media = ";";
                     String link = "";
                     String guid = "";
@@ -151,11 +151,9 @@ public class SendNewsFormActivity extends Activity {
                 videoPreview.setImageBitmap(thumbnail);
             }
             else{
-                videoPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
+                //videoPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
             }
-
         }
-
     }
 
     // Launch camera to get a picture

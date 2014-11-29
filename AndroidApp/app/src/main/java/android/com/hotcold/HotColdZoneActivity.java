@@ -48,6 +48,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
     private String ID_NEW = "id";
     private String TITLE = "title";
     private String DESCRIPTION = "description";
+    private String URL = "link";
     private String DATE = "pubDate";
     private String TEMPERATURE = "temperatura";
     private String LATITUDE = "latitud";
@@ -102,6 +103,10 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
 
     }
 
+    /**
+     * Get a list of news
+     * @param newsType Type of news to get. Types im Backend class
+     */
     private void getSomeNews(String newsType){
         try {
             listNews = Backend.GetNews(Backend.ADDRES + newsType);

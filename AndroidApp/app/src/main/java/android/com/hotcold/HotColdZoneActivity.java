@@ -30,6 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import hotcold.utilitys.Utils;
 import network.Backend;
 
 public class HotColdZoneActivity extends Activity implements  OnGestureListener {
@@ -199,7 +200,8 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
             // TODO ratear la noticia con negativo
         }
 
-        listNews.remove(indexListNews);
+        //listNews.remove(indexListNews);
+        listNews = Utils.jsonArrayRemove(listNews, indexListNews);
 
         // If still new to rate
         if(listNews.length() > 0 && indexListNews>=0) {

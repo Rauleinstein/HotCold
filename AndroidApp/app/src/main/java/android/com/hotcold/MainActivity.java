@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.json.JSONArray;
+
+import network.Backend;
+import network.News;
+
 
 public class MainActivity extends Activity {
 
@@ -14,8 +19,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        startActivity(new Intent(this, SendNewsForm.class));
+        News noticias = new News("asdf", "asdf","asdf",1,"asdf", "asdf", "asdf" );
+        System.out.println(noticias.toString());
+        String addr  = "http://hotcold.esy.es/get_news.php?tabla=Noticias";
+        try {
+            Backend backend = new Backend();
+            JSONArray news = backend.GetNews(addr);
+            news.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

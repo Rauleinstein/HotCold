@@ -39,9 +39,11 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     protected void onPostExecute(Bitmap result) {
 
-       if(result == null)
-           bmImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.videodefault));
-       else
-           bmImage.setImageBitmap(result);
+        if(activity != null) {
+            if (result == null)
+                bmImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.videodefault));
+            else
+                bmImage.setImageBitmap(result);
+        }
     }
 }

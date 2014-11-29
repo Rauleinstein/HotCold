@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.com.hotcold.androidapp.R;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,13 +66,14 @@ public class MainActivity extends Activity {
         initComponents();
         
         getSomeNews(Backend.TABLE_NOTICIAS);
+        recoverNewsStars();
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        recoverNewsStars();
+
         fillNewsList();
     }
 
@@ -100,9 +102,9 @@ public class MainActivity extends Activity {
         });
 
 
-        //myAdapter = new MyListAdapter();
-        //listPrincipal = (ListView)findViewById(R.id.listPrincipalNews);
-        //listPrincipal.setAdapter(myAdapter);
+        listPrincipal = (ListView)findViewById(R.id.listPrincipalNews);
+        listPrincipal.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
     }
 
     /**
@@ -151,6 +153,9 @@ public class MainActivity extends Activity {
      */
     private void fillNewsList() {
 
+        myAdapter = new MyListAdapter();
+        listPrincipal.setAdapter(myAdapter);
+
     }
 
 
@@ -180,7 +185,7 @@ public class MainActivity extends Activity {
 
         @Override
         public int getCount() {
-            return 0;
+            return listNews.length();
         }
 
         @Override
@@ -236,7 +241,7 @@ public class MainActivity extends Activity {
             }
 
 
-            return null;
+            return convertView;
         }
     }
 
@@ -245,5 +250,12 @@ public class MainActivity extends Activity {
         LinearLayout element;
         TextView titlePreview;
         ImageView imgPreview;
+
+        public boolean equals(Object o)
+        {
+            HolderAdapter h = (HolderAdapter) o;
+
+            return h.id == this.id;
+        }
     }
 }

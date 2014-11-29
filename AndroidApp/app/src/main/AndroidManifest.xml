@@ -3,6 +3,13 @@
     package="android.com.hotcold.androidapp" >
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -21,15 +28,6 @@
             android:name="android.com.hotcold.SendNewsFormActivity"
             android:label="@string/title_activity_send_news_form" >
         </activity>
-
-        <uses-feature
-            android:name="android.hardware.camera"
-            android:required="true" />
-
-        <uses-permission
-            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-            android:maxSdkVersion="18" />
-
         <activity
             android:name="android.com.hotcold.HotColdZoneActivity"
             android:label="@string/title_activity_hot_cold_zone" >

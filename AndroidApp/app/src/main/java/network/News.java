@@ -15,19 +15,21 @@ public class News {
     public String title;
     public String description;
     public String media;
+    public String link;
     public String guid;
     public String pubDate;
     public int temperatura;
-    public String link;
     public String latitud;
     public String longitud;
 
-    public News(String title, String description, String media, int temperatura, String link, String latitud, String longitud) {
+    public News(String title, String description, String media, String link, String guid, String pubDate, int temperatura, String latitud, String longitud) {
         this.title = title;
         this.description = description;
         this.media = media;
-        this.temperatura = temperatura;
         this.link = link;
+        this.guid = guid;
+        this.pubDate = pubDate;
+        this.temperatura = temperatura;
         this.latitud = latitud;
         this.longitud = longitud;
     }

@@ -1,5 +1,7 @@
 package network;
 
+import android.app.Activity;
+import android.com.hotcold.androidapp.R;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -14,9 +16,11 @@ import java.io.InputStream;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
+    Activity activity;
 
-    public DownloadImageTask(ImageView bmImage) {
+    public DownloadImageTask(Activity _activity, ImageView bmImage) {
         this.bmImage = bmImage;
+        activity = _activity;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -35,6 +39,11 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     protected void onPostExecute(Bitmap result) {
 
-        bmImage.setImageBitmap(result);
+        if(activity != null) {
+            if (result == null)
+                bmImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.videodefault));
+            else
+                bmImage.setImageBitmap(result);
+        }
     }
 }

@@ -2,19 +2,29 @@ package android.com.hotcold;
 
 import android.app.Activity;
 import android.com.hotcold.androidapp.R;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import network.Backend;
 import network.DownloadImageTask;
@@ -29,12 +39,15 @@ public class MainActivity extends Activity {
     // Components
     ImageView imgStarred1, imgStarred2;
     TextView titleStarred1, titleStarred2;
+    ListView listPrincipal;
+    MyListAdapter myAdapter;
 
     // Manage JSONObject - News
     private String ID_NEW = "id";
     private String TITLE = "title";
     private String DESCRIPTION = "description";
-    private String URL = "link";
+    private String URL_NEW = "link";
+    private String URL_IMG = "link";
     private String DATE = "pubDate";
     private String TEMPERATURE = "temperatura";
     private String LATITUDE = "latitud";
@@ -53,14 +66,15 @@ public class MainActivity extends Activity {
         initComponents();
         
         getSomeNews(Backend.TABLE_NOTICIAS);
+        recoverNewsStars();
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
+        fillNewsList();
         recoverNewsStars();
-        //TODO fillNewsList();
     }
 
     private void initComponents(){
@@ -86,6 +100,11 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(getApplication(), HotColdZoneActivity.class));
             }
         });
+
+
+        listPrincipal = (ListView)findViewById(R.id.listPrincipalNews);
+        listPrincipal.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
     }
 
     /**
@@ -98,8 +117,8 @@ public class MainActivity extends Activity {
             starredNews = listNews.getJSONObject(0);
             titleStarred1.setText(starredNews.getString(TITLE));
 
-            new DownloadImageTask(imgStarred1)
-                    .execute(starredNews.getString(URL));
+            new DownloadImageTask(this, imgStarred1)
+                    .execute(starredNews.getString(URL_IMG));
 
             //imgStarred1.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
@@ -107,8 +126,8 @@ public class MainActivity extends Activity {
 
             starredNews = listNews.getJSONObject(0);
             titleStarred2.setText(starredNews.getString(TITLE));
-            new DownloadImageTask(imgStarred2)
-                    .execute(starredNews.getString(URL));
+            new DownloadImageTask(this, imgStarred2)
+                    .execute(starredNews.getString(URL_IMG));
             //imgStarred2.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
             listNews.remove(0);
@@ -127,6 +146,16 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             Log.e(ACTIVITY_TAG, "Cant get news...");
         }
+    }
+
+    /**
+     * Fill the list of news
+     */
+    private void fillNewsList() {
+
+        myAdapter = new MyListAdapter();
+        listPrincipal.setAdapter(myAdapter);
+
     }
 
 
@@ -150,5 +179,83 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class MyListAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return listNews.length();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            final HolderAdapter holder;
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            if (convertView == null) {
+                holder = new HolderAdapter();
+                convertView = inflater.inflate(R.layout.item_list_new, parent, false);
+
+                holder.titlePreview = (TextView)convertView.findViewById(R.id.listTitleNewPreview);
+                holder.imgPreview = (ImageView) convertView.findViewById(R.id.listImgPreview);
+                holder.element = (LinearLayout)convertView.findViewById(R.id.listItemNew);
+
+                holder.id = position;
+
+                convertView.setTag(holder);
+            }
+            else{
+                holder = (HolderAdapter) convertView.getTag();
+            }
+
+            final int positionList = position;
+            // Agregando identificador unico al boton
+            holder.element.setTag(holder);
+            holder.element.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    //makeIntent(positionList);
+                }
+            });
+
+            try {
+                JSONObject aNew = listNews.getJSONObject(position);
+                holder.titlePreview.setText(aNew.getString(TITLE));
+                new DownloadImageTask(getParent(), holder.imgPreview)
+                        .execute(aNew.getString(URL_IMG));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return convertView;
+        }
+    }
+
+    private class HolderAdapter{
+        int id;
+        LinearLayout element;
+        TextView titlePreview;
+        ImageView imgPreview;
+
+        public boolean equals(Object o)
+        {
+            HolderAdapter h = (HolderAdapter) o;
+
+            return h.id == this.id;
+        }
     }
 }

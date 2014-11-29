@@ -68,6 +68,8 @@ public class MainActivity extends Activity {
         
         getSomeNews(Backend.TABLE_NOTICIAS);
         recoverNewsStars();
+
+        getActionBar().setTitle("Hello world App");
     }
 
     @Override

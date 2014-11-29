@@ -5,12 +5,14 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listItemNew">
+        android:layout_height="74dp"
+        android:id="@+id/listItemNew"
+        android:background="#ffffffff">
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="99dp"
@@ -21,14 +23,16 @@
 
         <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_marginTop="5dp">
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Title news"
-                android:id="@+id/listTitleNewPreview" />
+                android:id="@+id/listTitleNewPreview"
+                android:textColor="#ff155168" />
         </FrameLayout>
 
     </LinearLayout>

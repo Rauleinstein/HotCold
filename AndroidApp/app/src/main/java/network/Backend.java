@@ -3,6 +3,7 @@ package network;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +16,14 @@ import java.util.Scanner;
 /**
  * Created by bott on 27/11/2014.
  */
-public class Backend {
+public abstract class Backend {
+
+    private static final String TAG = "Backend_utils";
+
+    public static final String ADDRES = "http://hotcold.esy.es/get_news.php?tabla=";
+    public static final String TABLE_NOTICIAS = "Noticias";
+    public static final String TABLE_HOT_NEWS = "HotNews";
+    public static final String TABLE_COLD_NEWS = "ColdNews";
 
     private static final String TITLE = "title";
 
@@ -33,7 +41,7 @@ public class Backend {
                 while (scan.hasNext())
                     str += scan.nextLine();
                 scan.close();
-                System.out.println(str);
+                Log.i(TAG, str);
                 try {
                     JSONArray jsonArray = new JSONArray(str);
 
@@ -51,7 +59,13 @@ public class Backend {
         }
     }
 
-    public JSONArray GetNews(String addr) throws Exception {
+    /**
+     * Get some news form the system
+     * @param addr
+     * @return
+     * @throws Exception
+     */
+    public static JSONArray GetNews(String addr) throws Exception {
         Asinc asi = new Asinc();
         asi.execute(addr);
         JSONArray ret = asi.get();

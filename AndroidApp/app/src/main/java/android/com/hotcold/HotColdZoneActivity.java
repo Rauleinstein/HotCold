@@ -72,6 +72,9 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hot_cold_zone);
 
+        getActionBar().setTitle("");
+        getActionBar().setLogo(getResources().getDrawable(R.drawable.hotnews));
+
         initComponents();
         changeNew();
 

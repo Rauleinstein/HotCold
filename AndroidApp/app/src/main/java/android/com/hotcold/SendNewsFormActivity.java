@@ -45,6 +45,9 @@ public class SendNewsFormActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_news_form);
 
+        getActionBar().setTitle("");
+        getActionBar().setLogo(getResources().getDrawable(R.drawable.hotnews));
+
         initComponents();
 
     }

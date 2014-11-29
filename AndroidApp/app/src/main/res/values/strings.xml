@@ -10,5 +10,8 @@
     <string name="contentnews">¿Qué está ocurriendo?</string>
     <string name="subirnews">subir noticia</string>
     <string name="title_activity_hot_cold_zone">HotColdZone</string>
+    <string name="cont">Content</string>
+    <string name="cont2">Title</string>
+    <string name="asdfsss">asdf</string>
 
 </resources>

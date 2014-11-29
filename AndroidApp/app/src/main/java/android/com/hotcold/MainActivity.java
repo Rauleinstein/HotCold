@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import hotcold.utilitys.Utils;
 import network.Backend;
 import network.DownloadImageTask;
 
@@ -122,7 +123,8 @@ public class MainActivity extends Activity {
 
             //imgStarred1.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
-            listNews.remove(0);
+            //listNews.remove(0);
+            listNews = Utils.jsonArrayRemove(listNews, 0);
 
             starredNews = listNews.getJSONObject(0);
             titleStarred2.setText(starredNews.getString(TITLE));
@@ -130,7 +132,8 @@ public class MainActivity extends Activity {
                     .execute(starredNews.getString(URL_IMG));
             //imgStarred2.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
-            listNews.remove(0);
+            //listNews.remove(0);
+            listNews = Utils.jsonArrayRemove(listNews, 0);
         } catch (JSONException e) {
             Log.e(ACTIVITY_TAG, "Cant get starred news: " + e);
         }

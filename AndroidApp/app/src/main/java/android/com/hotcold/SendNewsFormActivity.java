@@ -17,7 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import network.Backend;
+import network.News;
 
 
 public class SendNewsFormActivity extends Activity {
@@ -88,7 +91,22 @@ public class SendNewsFormActivity extends Activity {
             public void onClick(View v) {
                 // TODO añadir funcionalidad
                 if(textNew.getText().toString().trim().length()>0) {
-                    Backend.sendUsersNews(imageNews, textNew.getText().toString());
+                    String title = "";
+                    String description = ";";
+                    String media = ";";
+                    String link = "";
+                    String guid = "";
+                    Date today = new Date();
+                    String pubDate = today.toString();
+                    int temperatura = 0;
+                    String latitud = "0";
+                    String longitud = "0";
+                    News noticia = new News( title, description, media, link, guid, pubDate, temperatura,  latitud, longitud);
+                    try {
+                        Backend.SendNews(noticia);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
                     Toast.makeText(activity, "No has introducido texto para la noticia", Toast.LENGTH_SHORT).show();

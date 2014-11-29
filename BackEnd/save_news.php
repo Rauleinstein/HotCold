@@ -1,6 +1,6 @@
 <?php 
 
-$params = $_POST;
+$params = $_GET;
 
 $mysqli = new mysqli('mysql.hostinger.es', 'u887840871_root', 'JEe3dIvLVO', 'u887840871_news');
 if ($mysqli->connect_errno) {

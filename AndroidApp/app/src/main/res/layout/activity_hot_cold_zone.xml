@@ -32,9 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:id="@+id/listImgPreview"
-                    android:src="@drawable/ic_launcher"
                     android:contentDescription="@string/asdfsss"
-                    android:background="@drawable/matanza2" />
+                    android:background="@drawable/matanza" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -51,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="10dp"
                     android:id="@+id/imageView3"
-                    android:background="@drawable/asdflk"
+                    android:background="@drawable/rectangle41"
                     android:layout_marginBottom="10dp" />
 
                 <TextView

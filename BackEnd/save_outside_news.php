@@ -36,7 +36,7 @@ foreach ($path as $rss) {
 		if ( false===$statement ) {
 			die('prepare() failed: ' . htmlspecialchars($mysqli->error));
 		}
-		$ret = $statement->bind_param('sssss', $title, $description, $link, $guid, $pubDate);
+		$ret = $statement->bind_param('sssss', $title, strip_tags($description), $link, $guid, $pubDate);
 
 		if($statement->execute()){
 		    print 'Success! ID of last inserted record is : ' .$statement->insert_id .'<br />'; 

@@ -30,6 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import hotcold.utilitys.Utils;
 import network.Backend;
 
@@ -63,6 +65,9 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
     private ImageView imgPreview;
     private Button botonAnterior;
     private Button botonSiguiente;
+
+    // FAKE imagenes
+    public ArrayList<Integer> listaFotos;
 
 
 
@@ -105,6 +110,19 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
             }
         });
         Button boton7 = (Button) findViewById(R.id.button7);
+
+        //Fake imagenes
+        listaFotos = new ArrayList<Integer>();
+        listaFotos.add(R.drawable.layer);
+        listaFotos.add(R.drawable.matanza);
+        listaFotos.add(R.drawable.ciencia2);
+        listaFotos.add(R.drawable.abc);
+        listaFotos.add(R.drawable.chinitos);
+        listaFotos.add(R.drawable.matanza);
+        listaFotos.add(R.drawable.ciencia);
+        listaFotos.add(R.drawable.ab);
+        listaFotos.add(R.drawable.layer);
+        listaFotos.add(R.drawable.ciencia2);
 
     }
 
@@ -205,6 +223,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
 
         //listNews.remove(indexListNews);
         listNews = Utils.jsonArrayRemove(listNews, indexListNews);
+        listaFotos.remove(indexListNews);
 
         // If still new to rate
         if(listNews.length() > 0 && indexListNews>=0) {
@@ -257,6 +276,9 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
             jsonNew = listNews.getJSONObject(indexListNews);
             title.setText(jsonNew.getString(TITLE));
             description.setText(jsonNew.getString(DESCRIPTION));
+            //FAKE fotos
+            if(indexListNews < listaFotos.size())
+                imgPreview.setBackground(getResources().getDrawable(listaFotos.get(indexListNews)));
 
             //imgPreview.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
         } catch (JSONException e) {

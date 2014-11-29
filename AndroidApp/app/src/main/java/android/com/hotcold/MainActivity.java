@@ -60,6 +60,9 @@ public class MainActivity extends Activity {
     JSONArray listNews;
     int indexListNews=0;
 
+    // FAKE imagenes
+    public ArrayList<Integer> listaFotos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,8 @@ public class MainActivity extends Activity {
         getSomeNews(Backend.TABLE_NOTICIAS);
         recoverNewsStars();
 
-        getActionBar().setTitle("Hello world App");
+        getActionBar().setTitle("");
+        getActionBar().setLogo(getResources().getDrawable(R.drawable.hotnews));
     }
 
     @Override
@@ -82,11 +86,24 @@ public class MainActivity extends Activity {
 
     private void initComponents(){
 
+        imgStarred1 = (ImageView) findViewById(R.id.imgStar1);
+        imgStarred2 = (ImageView) findViewById(R.id.imgStar2);
+
+        //Fake imagenes
+        listaFotos = new ArrayList<Integer>();
+        listaFotos.add(R.drawable.layer);
+        listaFotos.add(R.drawable.matanza);
+        listaFotos.add(R.drawable.ciencia2);
+        listaFotos.add(R.drawable.abc);
+        listaFotos.add(R.drawable.chinitos);
+        listaFotos.add(R.drawable.publi);
+        listaFotos.add(R.drawable.ciencia);
+        listaFotos.add(R.drawable.ab);
+
+
         titleStarred1 = (TextView) findViewById(R.id.titleStar1);
         titleStarred2 = (TextView) findViewById(R.id.titleStar2);
 
-        imgStarred1 = (ImageView) findViewById(R.id.imgStar1);
-        imgStarred2 = (ImageView) findViewById(R.id.imgStar2);
 
         boton1 = (Button) findViewById(R.id.button);
         boton1.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +137,14 @@ public class MainActivity extends Activity {
             starredNews = listNews.getJSONObject(0);
             titleStarred1.setText(starredNews.getString(TITLE));
 
+            // Imagen fake
+            imgStarred1.setImageDrawable(getResources().getDrawable(listaFotos.get(0)));
+            imgStarred2.setImageDrawable(getResources().getDrawable(listaFotos.get(1)));
+
+            /*
             new DownloadImageTask(this, imgStarred1)
                     .execute(starredNews.getString(URL_IMG));
+                    */
 
             //imgStarred1.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
@@ -130,8 +153,10 @@ public class MainActivity extends Activity {
 
             starredNews = listNews.getJSONObject(0);
             titleStarred2.setText(starredNews.getString(TITLE));
+            /*
             new DownloadImageTask(this, imgStarred2)
-                    .execute(starredNews.getString(URL_IMG));
+                   .execute(starredNews.getString(URL_IMG));
+                  */
             //imgStarred2.setImageDrawable(getResources().getDrawable(R.drawable.videodefault));
 
             //listNews.remove(0);
@@ -236,11 +261,18 @@ public class MainActivity extends Activity {
                 }
             });
 
+            if(position == 3){
+                holder.titlePreview.setVisibility(View.INVISIBLE);
+                holder.imgPreview.setVisibility(View.INVISIBLE);
+                holder.element.setBackground(getResources().getDrawable(listaFotos.get(position+2)));
+            }
             try {
                 JSONObject aNew = listNews.getJSONObject(position);
                 holder.titlePreview.setText(aNew.getString(TITLE));
-                new DownloadImageTask(getParent(), holder.imgPreview)
+                /*new DownloadImageTask(getParent(), holder.imgPreview)
                         .execute(aNew.getString(URL_IMG));
+                        */
+                holder.imgPreview.setImageDrawable(getResources().getDrawable(listaFotos.get(position+2)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

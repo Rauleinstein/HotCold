@@ -9,7 +9,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:weightSum="1">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -22,7 +23,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:layout_marginRight="5dp">
+                android:layout_marginRight="5dp"
+                android:background="#ffffffff">
 
                 <FrameLayout
                     android:layout_width="fill_parent"
@@ -30,8 +32,8 @@
                     android:layout_weight="0.75">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:id="@+id/imgStar1"
                         android:src="@drawable/ic_launcher" />
                 </FrameLayout>
@@ -60,7 +62,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp">
+                android:layout_marginLeft="5dp"
+                android:background="#ffffffff">
 
                 <FrameLayout
                     android:layout_width="fill_parent"
@@ -85,7 +88,6 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Medium Text"
                         android:id="@+id/titleStar2"
-                        android:layout_marginTop="3dp"
                         android:textStyle="bold"
                         android:textColor="#ff155168"
                         android:background="#ffffffff"
@@ -97,44 +99,34 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="258dp"
-            android:id="@+id/listPrincipalNews" />
+            android:id="@+id/listPrincipalNews"
+            android:layout_weight="0.82" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="#ffffffff"
+            android:layout_marginTop="5dp">
 
             <Button
-                android:layout_width="91dp"
-                android:layout_height="wrap_content"
-                android:text="formulario"
+                android:layout_width="85dp"
+                android:layout_height="55dp"
                 android:id="@+id/button"
                 android:layout_below="@+id/button2"
-                android:layout_toStartOf="@+id/button3" />
+                android:layout_toStartOf="@+id/button3"
+                android:background="@drawable/crear_noticia"
+                android:layout_marginLeft="65dp" />
 
             <Button
-                android:layout_width="91dp"
-                android:layout_height="wrap_content"
-                android:text="votaciones"
+                android:layout_width="45dp"
+                android:layout_height="50dp"
                 android:id="@+id/button2"
                 android:layout_toEndOf="@+id/button3"
-                android:layout_above="@+id/button3" />
+                android:layout_above="@+id/button3"
+                android:background="@drawable/voto"
+                android:layout_marginLeft="50dp" />
 
-            <Button
-                android:layout_width="91dp"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
-                android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/button4" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button4"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true" />
         </LinearLayout>
 
     </LinearLayout>

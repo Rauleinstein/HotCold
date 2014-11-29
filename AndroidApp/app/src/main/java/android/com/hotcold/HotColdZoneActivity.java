@@ -48,7 +48,8 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
     private String ID_NEW = "id";
     private String TITLE = "title";
     private String DESCRIPTION = "description";
-    private String URL = "link";
+    private String URL_NEW = "link";
+    private String URL_IMG = "link";
     private String DATE = "pubDate";
     private String TEMPERATURE = "temperatura";
     private String LATITUDE = "latitud";
@@ -83,7 +84,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
         layoutNew = (LinearLayout) findViewById(R.id.layoutNews);
         title = (TextView) findViewById(R.id.textTitleNew);
         description = (TextView) findViewById(R.id.textContentNew);
-        imgPreview = (ImageView) findViewById(R.id.imgPreview);
+        imgPreview = (ImageView) findViewById(R.id.listImgPreview);
 
         botonAnterior = (Button) findViewById(R.id.button5);
         botonAnterior.setOnClickListener(new View.OnClickListener() {

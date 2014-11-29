@@ -31,7 +31,7 @@
                 <ImageView
                     android:layout_width="175dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imgPreview"
+                    android:id="@+id/listImgPreview"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="25dp"
                     android:src="@drawable/ic_launcher"
@@ -45,7 +45,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Title"
                     android:id="@+id/textTitleNew"
-                    android:layout_below="@+id/imgPreview"
+                    android:layout_below="@+id/listImgPreview"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"
                     android:layout_gravity="center_horizontal"

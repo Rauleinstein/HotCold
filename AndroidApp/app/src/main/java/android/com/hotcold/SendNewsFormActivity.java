@@ -97,7 +97,7 @@ public class SendNewsFormActivity extends Activity {
         });
 
 
-        imgPreview = (ImageView) findViewById(R.id.imgPreview);
+        imgPreview = (ImageView) findViewById(R.id.listImgPreview);
         imgPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

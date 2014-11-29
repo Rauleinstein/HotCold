@@ -6,16 +6,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
+
+    Button boton1, boton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(this, SendNewsForm.class));
+        initComponents();
+    }
+
+    private void initComponents(){
+        boton1 = (Button) findViewById(R.id.button);
+        boton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(), SendNewsFormActivity.class));
+            }
+        });
+
+        boton2 = (Button)findViewById(R.id.button2);
+        boton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(), HotColdZoneActivity.class));
+            }
+        });
+
+
     }
 
 

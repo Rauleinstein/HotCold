@@ -9,5 +9,6 @@
     <string name="video"><u>Hacer video</u></string>
     <string name="contentnews">¿Qué está ocurriendo?</string>
     <string name="subirnews">subir noticia</string>
+    <string name="title_activity_hot_cold_zone">HotColdZone</string>
 
 </resources>

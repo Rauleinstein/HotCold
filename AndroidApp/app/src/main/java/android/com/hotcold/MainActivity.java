@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import network.Backend;
 import network.DownloadImageTask;
 
-import network.Backend;
 import network.News;
 
 
@@ -62,13 +61,6 @@ public class MainActivity extends Activity {
 
         recoverNewsStars();
         //TODO fillNewsList();
-
-        News noticia = new News("a","a","a",1,"a","a", "a");
-        try {
-            Backend.SendNews(noticia);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void initComponents(){
@@ -131,7 +123,7 @@ public class MainActivity extends Activity {
      */
     private void getSomeNews(String newsType){
         try {
-            listNews = Backend.GetNews(Backend.ADDRES + newsType);
+            listNews = Backend.GetNews(Backend.GET_NEWS_PHP + newsType);
         } catch (Exception e) {
             Log.e(ACTIVITY_TAG, "Cant get news...");
         }

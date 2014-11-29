@@ -109,7 +109,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
      */
     private void getSomeNews(String newsType){
         try {
-            listNews = Backend.GetNews(Backend.ADDRES + newsType);
+            listNews = Backend.GetNews(Backend.GET_NEWS_PHP + newsType);
         } catch (Exception e) {
             Log.e(ACTIVITY_TAG, "Cant get news...");
         }

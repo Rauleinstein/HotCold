@@ -1,6 +1,6 @@
 <?php 
 
-$params = $_POST;
+$params = $_GET;
 
 $mysqli = new mysqli('mysql.hostinger.es', 'u887840871_root', 'JEe3dIvLVO', 'u887840871_news');
 if ($mysqli->connect_errno) {
@@ -22,9 +22,4 @@ if ($result = $mysqli->query($sql)) {
 } else {
 	printf("Error: %s\n", $mysqli->error);
 }
-/*
-$result = $mysqli->query("SELECT * FROM Noticias"); 
-var_dump($result);
 
-$json = $result->fetch_array();
-echo json_encode($json); */

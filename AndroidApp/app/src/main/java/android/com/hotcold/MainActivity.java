@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import network.Backend;
+import network.News;
+
 
 public class MainActivity extends Activity {
 
@@ -14,8 +17,31 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initComponents();
+        News noticia = new News("a","a","a",1,"a","a", "a");
+        try {
+            Backend.SendNews(noticia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        startActivity(new Intent(this, SendNewsForm.class));
+    private void initComponents(){
+        boton1 = (Button) findViewById(R.id.button);
+        boton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(), SendNewsFormActivity.class));
+            }
+        });
+
+        boton2 = (Button)findViewById(R.id.button2);
+        boton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(), HotColdZoneActivity.class));
+            }
+        });
     }
 
 

@@ -15,6 +15,8 @@ public class News {
     public String title;
     public String description;
     public String media;
+    public String guid;
+    public String pubDate;
     public int temperatura;
     public String link;
     public String latitud;

@@ -277,7 +277,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
                 slide.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-                        layoutNew.setBackgroundColor(Color.argb(75, 255, 128, 4));
+                        layoutNew.setBackgroundColor(Color.argb(85, 255, 128, 4));
                     }
                     @Override
                     public void onAnimationEnd(Animation animation) {
@@ -302,7 +302,7 @@ public class HotColdZoneActivity extends Activity implements  OnGestureListener 
                 slide.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-                        layoutNew.setBackgroundColor(Color.BLUE);
+                        layoutNew.setBackgroundColor(Color.argb(85, 15, 126,154));
                     }
                     @Override
                     public void onAnimationEnd(Animation animation) {
